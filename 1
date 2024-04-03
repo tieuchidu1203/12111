@@ -263,18 +263,27 @@ UseMethod()
 for i = 1,6 do 
     game.ReplicatedStorage.Events.ClaimHive:FireServer(i)
 end
-local old = TvkStatCache.Eggs["MagicBean"]
+local old = TvkStatCache.Eggs["FestiveBean"]
 while wait(1) do 
     if not game.Players:FindFirstChild(getgenv().Acc) then 
         game:Shutdown()
-    UseMethod() 
-        game:GetService("ReplicatedStorage").Events.PlayerActivesCommand:FireServer({["Name"] = "Magic Bean"})
-    
-    if TvkStatCache.Eggs["MagicBean"] ~= old then 
+    end
+    UseMethod()
+    pcall(function() 
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = FieldPos
+        game.ReplicatedStorage.Events.ToyEvent:FireServer("Snow Machine")
+        if getgenv().UseNightBell and CurrTime == "Night" then 
+            game:GetService("ReplicatedStorage").Events.PlayerActivesCommand:FireServer({["Name"] = "Night Bell"})
+        end
+        game:GetService("ReplicatedStorage").Events.PlayerActivesCommand:FireServer({["Name"] = "Festive Bean"})
+        game:GetService("ReplicatedStorage").Events.PlayerActivesCommand:FireServer({["Name"] = "Cloud Vial"})
+    end)
+    if TvkStatCache.Eggs["FestiveBean"] ~= old then 
         --spawn(function() messagebox("","tvk1308RM",0) end)
         --wait(5)
         game.Players.LocalPlayer:Kick()
     end
+    if getgenv().UseNightBell and CurrTime == "Night" and TvkStatCache.Eggs["NightBell"] == 0 then 
         game.Players.LocalPlayer:Kick()
         wait(1)
         game:Shutdown()
