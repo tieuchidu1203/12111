@@ -165,6 +165,15 @@ game:GetService('RunService').Stepped:Connect(function()
     if true then plr.Character.Humanoid:ChangeState(11)
     end
 end)
+function FPSBoost() 
+    settings().Rendering.QualityLevel = "Level01"
+    UserSettings():GetService("UserGameSettings").GraphicsQualityLevel = 1
+    UserSettings():GetService("UserGameSettings").MasterVolume = 0
+    local cc = Instance.new("Part",workspace)
+    cc.Name = "tvk"
+    cc.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,-4,0)
+    cc.Anchored=true
+    cc.Size = Vector3.new(50,5,50)
 
     local plr = game.Players.LocalPlayer
     local name = plr.Name
