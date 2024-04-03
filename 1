@@ -263,14 +263,14 @@ UseMethod()
 for i = 1,6 do 
     game.ReplicatedStorage.Events.ClaimHive:FireServer(i)
 end
-local old = TvkStatCache.Eggs["FestiveBean"]
+local old = TvkStatCache.Eggs["MagicBean"]
 while wait(1) do 
     if not game.Players:FindFirstChild(getgenv().Acc) then 
         game:Shutdown()
     UseMethod() 
-        game:GetService("ReplicatedStorage").Events.PlayerActivesCommand:FireServer({["Name"] = "Festive Bean"})
+        game:GetService("ReplicatedStorage").Events.PlayerActivesCommand:FireServer({["Name"] = "Magic Bean"})
     
-    if TvkStatCache.Eggs["FestiveBean"] ~= old then 
+    if TvkStatCache.Eggs["MagicBean"] ~= old then 
         --spawn(function() messagebox("","tvk1308RM",0) end)
         --wait(5)
         game.Players.LocalPlayer:Kick()
